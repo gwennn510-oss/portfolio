@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chen Sew Mun — Editorial & Translation Portfolio</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: #f8f4ed;
+  color: #1c1c1c;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+a { color: #b8963e; }
+
+/* NAV */
+.nav {
+  background: #0f1f3d;
+  padding: 0 3rem;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-name {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #d4af6a;
+  text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: #aaaaaa;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/* HERO */
+.hero {
+  background: #0f1f3d;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+}
+.hero-left {
+  padding: 5rem 3rem 4rem 4rem;
+  border-right: 1px solid #1e3060;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-eyebrow {
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  color: #b8963e;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+.hero-name {
+  font-family: Georgia, serif;
+  font-size: 3.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1.05;
+  margin-bottom: 0.2rem;
+}
+.hero-name-zh {
+  font-family: Georgia, serif;
+  font-size: 1.8rem;
+  font-style: italic;
+  color: #d4af6a;
+  margin-bottom: 2rem;
+  letter-spacing: 0.06em;
+}
+.hero-rule {
+  width: 50px;
+  height: 1px;
+  background: #b8963e;
+  margin-bottom: 1.5rem;
+}
+.hero-tagline {
+  font-size: 1.1rem;
+  color: #c0c8d8;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 420px;
+}
+.hero-tagline em { color: #d4af6a; font-style: italic; }
+.badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.badge {
+  font-family: 'Courier New', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #d4af6a;
+  border: 1px solid #3a5080;
+  padding: 4px 10px;
+}
+
+.hero-right {
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5rem;
+}
+.stat { border-left: 2px solid #b8963e; padding-left: 1.2rem; }
+.stat-num {
+  font-family: Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1;
+}
+.stat-num.sm { font-size: 1.3rem; padding-top: 0.2rem; }
+.stat-label {
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6688aa;
+  margin-top: 0.3rem;
+}
+
+/* ABOUT */
+.about {
+  background: #0f1f3d;
+  padding: 3.5rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2.5rem;
+  border-top: 1px solid #1e3060;
+}
+.about-col { border-top: 1px solid #3a5a3a; padding-top: 1.2rem; }
+.about-col-label {
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #b8963e;
+  margin-bottom: 0.8rem;
+  white-space: nowrap;
+}
+.about-col p {
+  font-size: 0.9rem;
+  color: #99aabb;
+  line-height: 1.7;
+  text-align: justify;
+}
+
+/* SECTIONS */
+.section { padding: 4.5rem 4rem; background: #f8f4ed; }
+.section.alt { background: #ede8de; }
+
+.sec-hdr {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 3rem;
+}
+.sec-num {
+  font-family: 'Courier New', monospace;
+  font-size: 9px;
+  color: #b8963e;
+  letter-spacing: 0.15em;
+}
+.sec-title {
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #0f1f3d;
+}
+.sec-rule {
+  flex: 1;
+  height: 1px;
+  background: #c9b99a;
+}
+
+/* ENTRIES */
+.entry {
+  margin-bottom: 3.5rem;
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid #c9b99a;
+}
+.entry:last-child { border-bottom: none; margin-bottom: 0; }
+
+.entry-title {
+  font-family: Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: bold;
+  color: #0f1f3d;
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
+}
+.entry-meta {
+  font-family: 'Courier New', monospace;
+  font-size: 8.5px;
+  letter-spacing: 0.12em;
+  color: #b8963e;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.entry p {
+  color: #5a5a5a;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* SAMPLE BOXES */
+.sbox {
+  background: #ffffff;
+  border: 1px solid #c9b99a;
+  border-left: 3px solid #b8963e;
+  padding: 1.2rem 1.5rem;
+  margin-top: 1rem;
+}
+.sbox.blue { border-left-color: #1a3260; }
+.sbox.green { border-left-color: #2e6b42; }
+.sbox-label {
+  font-family: 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b8963e;
+  margin-bottom: 0.6rem;
+}
+.sbox p {
+  font-size: 0.88rem;
+  color: #1c1c1c;
+  line-height: 1.7;
+  font-style: italic;
+  margin: 0;
+  text-align: left;
+}
+.sbox p.normal { font-style: normal; }
+.sbox a {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: #b8963e;
+  text-decoration: none;
+  border-bottom: 1px solid #b8963e;
+}
+
+/* BEFORE / AFTER */
+.ba {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+.ba-box {
+  border: 1px solid #c9b99a;
+  padding: 1rem 1.2rem;
+  background: #fffdf8;
+}
+.ba-label {
+  font-family: 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+.ba-label.b { color: #a05a5a; }
+.ba-label.a { color: #2e6b42; }
+.ba-text { font-size: 0.85rem; line-height: 1.6; }
+.ba-text.b { color: #8a4040; }
+.ba-text.a { color: #1e4f30; }
+
+/* WORK CARDS */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: #c9b99a;
+}
+.card {
+  background: #ede8de;
+  padding: 2rem 2.2rem;
+}
+.card-tag {
+  font-family: 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #b8963e;
+  margin-bottom: 0.7rem;
+}
+.card h3 {
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #0f1f3d;
+  margin-bottom: 0.7rem;
+  line-height: 1.3;
+}
+.card p {
+  font-size: 0.88rem;
+  color: #5a5a5a;
+  line-height: 1.65;
+  margin-bottom: 0.7rem;
+}
+.card-note {
+  font-family: 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  color: #b8963e;
+  border-top: 1px solid #c9b99a;
+  padding-top: 0.7rem;
+  margin-top: 0.7rem;
+}
+
+/* SKILLS */
+.skills {
+  background: #0f1f3d;
+  padding: 3rem 4rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+.skill {
+  text-align: center;
+  border: 1px solid #2a4060;
+  padding: 1.3rem 0.8rem;
+}
+.skill-name {
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin-bottom: 0.3rem;
+}
+.skill-desc {
+  font-family: 'Courier New', monospace;
+  font-size: 7.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #5577aa;
+}
+
+/* TABLES */
+.sub-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
+.sub-table td { padding: 5px 10px 5px 0; border-bottom: 1px solid #c9b99a; }
+.sub-table tr:last-child td { border-bottom: none; }
+.sub-zh { color: #5a5a5a; width: 46%; }
+.sub-en { color: #1c1c1c; }
+
+.qa-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+.qa-th {
+  padding: 6px 10px 6px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 7.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b8963e;
+  border-bottom: 2px solid #c9b99a;
+}
+.qa-b { padding: 8px 10px 8px 0; color: #8a4040; font-style: italic; border-bottom: 1px solid #c9b99a; vertical-align: top; width: 28%; }
+.qa-a { padding: 8px 10px 8px 0; color: #1e4f30; border-bottom: 1px solid #c9b99a; vertical-align: top; width: 28%; }
+.qa-n { padding: 8px 0; color: #5a5a5a; font-size: 0.8rem; border-bottom: 1px solid #c9b99a; vertical-align: top; }
+
+/* CONTACT */
+.contact {
+  background: #0f1f3d;
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.contact h2 {
+  font-family: Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.contact h2 em { font-style: italic; color: #d4af6a; }
+.contact-sub { font-size: 0.95rem; color: #6688aa; line-height: 1.7; }
+.contact-items { display: flex; flex-direction: column; gap: 1rem; }
+.ci {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  border-top: 1px solid #1e3060;
+  padding-top: 1rem;
+}
+.ci-label {
+  font-family: 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #b8963e;
+  min-width: 68px;
+  padding-top: 0.1rem;
+}
+.ci-val { font-size: 0.95rem; color: #ffffff; }
+.ci-val a { color: #d4af6a; text-decoration: none; }
+
+/* FOOTER */
+footer {
+  background: #060d1a;
+  padding: 1.2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+}
+footer span {
+  font-family: 'Courier New', monospace;
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: #334466;
+}
+
+@media (max-width: 800px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 3rem 1.5rem; }
+  .about { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+  .section { padding: 3rem 1.5rem; }
+  .card-grid { grid-template-columns: 1fr; }
+  .skills { grid-template-columns: 1fr 1fr; padding: 2rem 1.5rem; }
+  .ba { grid-template-columns: 1fr; }
+  .contact { grid-template-columns: 1fr; padding: 2.5rem 1.5rem; }
+  footer { padding: 1rem 1.5rem; flex-direction: column; gap: 0.4rem; }
+  .nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="nav-name">Chen Sew Mun</span>
+  <ul class="nav-links">
+    <li><a href="#s1">Academic</a></li>
+    <li><a href="#s2">Editorial QA</a></li>
+    <li><a href="#s3">Terminology</a></li>
+    <li><a href="#s4">Localization</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Translation · Editorial · Language Specialist</p>
+    <h1 class="hero-name">Chen<br>Sew Mun</h1>
+    <p class="hero-name-zh">曾秀雯</p>
+    <div class="hero-rule"></div>
+    <p class="hero-tagline">
+      From academic abstracts to published articles —
+      I write and edit with the <em>precision that high-stakes communication demands.</em>
+      Trilingual. Detail-obsessed. Deadline-proof.
+    </p>
+    <div class="badges">
+      <span class="badge">Chinese · English · Malay</span>
+      <span class="badge">SDL Trados</span>
+      <span class="badge">Academic Translation</span>
+      <span class="badge">Editorial QA</span>
+      <span class="badge">MTPE Specialist</span>
+      <span class="badge">ITBM Certified Translator (Enrolled · Pending Apr 2026)</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat">
+      <div class="stat-num">250+</div>
+      <div class="stat-label">Video assets localized &amp; QA'd</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3.91</div>
+      <div class="stat-label">CGPA · First Class Honours · UPM</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1</div>
+      <div class="stat-label">Published article · Lin Lian Yu Memorial Bulletin (Issues 20 &amp; 21)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num sm">HSK 6 · MUET 4</div>
+      <div class="stat-label">Certified language proficiency · Chinese &amp; English</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about">
+  <div class="about-col">
+    <p class="about-col-label">Approach</p>
+    <p>I don't just translate — I build the terminology base, maintain consistency end-to-end, and ensure every word holds up under scrutiny. Academic rigour informs everything I touch.</p>
+  </div>
+  <div class="about-col">
+    <p class="about-col-label">Background</p>
+    <p>Bachelor's in Chinese Studies (UPM), First Class Honours. AI language data specialist. Localization QA lead. Published author. Consecutive &amp; simultaneous interpreter across government delegations, trade forums, and industry events.</p>
+  </div>
+  <div class="about-col">
+    <p class="about-col-label">Why Legal Editing</p>
+    <p>Legal and expert writing demands clarity, precision, and consistency — the same standards I apply across every translation and editorial project I take on.</p>
+  </div>
+</div>
+
+<!-- S1: ACADEMIC -->
+<div class="section" id="s1">
+  <div class="sec-hdr">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title">Academic Translation &amp; Editorial</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <div class="entry">
+    <p class="entry-title">Academic Abstract Translation — Master's Thesis</p>
+    <p class="entry-meta">Chinese → Bahasa Malaysia · University Submission Standard</p>
+    <p>Translated a Master's thesis abstract on classical Chinese drama into Bahasa Malaysia, meeting Malaysian university requirements that mandate a Malay-language abstract regardless of the thesis's primary language. The subject matter — an analysis of the theatrical technique <em>"play within a play"</em> in the works of Qing dynasty dramatist Jiang Shiquan — required precise handling of literary-critical terminology across two typologically distinct language systems, while preserving academic register and argumentative clarity throughout.</p>
+    <div class="sbox blue">
+      <p class="sbox-label">Source — Chinese</p>
+      <p class="normal">"戏中用戏"作为一种传统的戏剧创作手法，能够营造出草蛇灰线、精妙入神的戏剧效果，为众多戏剧作家所运用。作为清中期戏曲界的"殿军"，蒋士铨（1725-1785）也同样擅长在自己的戏剧作品当中使用这种艺术手法。本文旨在通过对其戏剧作品中"戏中用戏"手法进行分析，深入理解蒋士铨的戏曲主张，探究其作品的叙事艺术与创作原则。</p>
+    </div>
+    <div class="sbox" style="margin-top:0.8rem;">
+      <p class="sbox-label">Translation — Bahasa Malaysia</p>
+      <p>Teknik "lakonan dalam lakonan" merupakan cara pengaryaan drama tradisional yang sering digunakan oleh penulis drama. Sebagai seorang penulis drama yang terkenal pada zaman pertengahan Dinasti Qing, Jiang Shiquan (1725–1785) juga mahir mengaplikasikan teknik ini dalam karyanya. Kajian ini bertujuan untuk mengkaji dengan lebih mendalam proposisi drama Jiang Shiquan serta meneliti gaya naratif dan prinsip penciptaan karyanya melalui analisis teknik "lakonan dalam lakonan" dalam karya dramanya.</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <p class="entry-title">Thesis Abstract — MTPE Correction &amp; Editorial QA</p>
+    <p class="entry-meta">Chinese → Bahasa Malaysia · Postgraduate · Before / After</p>
+    <p>Reviewed and corrected machine-translated Malay abstracts for postgraduate theses, identifying unnatural phrasing, register inconsistencies, and terminological imprecision introduced by MT output. The work required sound editorial judgment — knowing not just that a sentence sounds wrong, but precisely why, and how to fix it without over-translating.</p>
+    <div class="ba">
+      <div class="ba-box">
+        <p class="ba-label b">Before — Machine Translation</p>
+        <p class="ba-text b">Mimpi merupakan fenomena fisiologi universal namun misteri, dicirikan oleh sifatnya yang ilusi dan samar-samar. Walaupun rekod kesusasteraan biografi sejarah pra-Qin dan dinasti Han mengutamakan ketepatan sejarah, ia juga mengandungi banyak kandungan berkaitan mimpi.</p>
+      </div>
+      <div class="ba-box">
+        <p class="ba-label a">After — Edited</p>
+        <p class="ba-text a">Mimpi merupakan fenomena misteri yang dialami semua manusia dan selalunya bersifat khayal. Walaupun karya historiografi zaman Pra-Qin dan Dinasti Han sangat mengutamakan kesahihan fakta, karya-karya tersebut tetap sarat dengan naratif berkaitan mimpi.</p>
+      </div>
+    </div>
+    <div class="sbox" style="margin-top:0.9rem;">
+      <p class="sbox-label">Editorial Note</p>
+      <p>Key corrections: removed calqued phrasing ("fenomena fisiologi universal namun misteri" → "fenomena misteri yang dialami semua manusia"); replaced stiff MT register with natural academic Malay; standardised romanisation of classical Chinese titles (e.g. "Guo Yu" → "Guoyu").</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <p class="entry-title">Published Academic Article</p>
+    <p class="entry-meta">Author · Lin Lian Yu Memorial Bulletin, Issues 20 &amp; 21</p>
+    <p>Authored and published <em>《盛极而骤衰——记加影华侨学校的盛衰历程》</em> across two consecutive issues (Feb 2023; Jan 2024). Written entirely from primary research — collecting historical source materials, cross-referencing archival records, and consulting historical texts to reconstruct an accurate institutional history. Every claim traceable, every conclusion earned.</p>
+    <div class="sbox">
+      <p class="sbox-label">Published Article — Full Text (pp. 38–40)</p>
+      <p class="normal" style="font-size:0.83rem;color:#5a5a5a;margin-bottom:0.7rem;">Research methodology: historical source collection · archival cross-referencing · primary document verification</p>
+      <a href="https://drive.google.com/file/d/1FISlGgQHx-Crc7TksQSlZ3NniOP2JeuP/view" target="_blank">→ Read full article (pp. 38–40)</a>
+    </div>
+  </div>
+</div>
+
+<!-- S2: EDITORIAL QA -->
+<div class="section alt" id="s2">
+  <div class="sec-hdr">
+    <span class="sec-num">02</span>
+    <h2 class="sec-title">Editorial QA &amp; Proofreading</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <div class="entry">
+    <p class="entry-title">Book Translation — Trilingual Classical Text</p>
+    <p class="entry-meta">Chinese → English &amp; Malay · Sun Tzu · The Art of War</p>
+    <p>Translated a scholarly introduction to <em>The Art of War</em> from Chinese into both English and Bahasa Malaysia — demonstrating the discipline to hold consistent register, rhythm, and conceptual precision across three language systems simultaneously. Classical Chinese prose demands particular care: the compression of meaning, rhetorical parallelism, and the cultural weight of each term cannot simply be carried across word-for-word.</p>
+    <div class="sbox blue">
+      <p class="sbox-label">Source — Chinese</p>
+      <p class="normal">东亚大陆与南亚次大陆板块的运动和挤压，造就了号称"世界屋脊"的喜马拉雅山脉；漫长的社会文明嬗递过程中，物质世界和精神活动的震荡与催化，诞生了一位被誉为"一代兵圣"的孙武。在血与火的搏击中，在智和力的较量里，他呕心沥血，剔精抉微，铸成了一部不朽的兵学巨著——《孙子兵法》。</p>
+    </div>
+    <div class="sbox green" style="margin-top:0.8rem;">
+      <p class="sbox-label">Translation — English</p>
+      <p>The vast tectonic movements that forced the East Asian continent against the Indian subcontinent gave rise to the Himalayas, the so-called "Roof of the World." Through the long evolution of human society, marked by upheaval, conflict, and creative ferment, a "Sage of War" emerged — Sun Wu (Sun Tzu). Battling amid the chaos of blood and fire, he devoted his life to probing the essence of warfare, leaving a masterpiece of military strategy: <em>The Art of War.</em></p>
+    </div>
+    <div class="sbox" style="margin-top:0.8rem;">
+      <p class="sbox-label">Translation — Bahasa Malaysia</p>
+      <p>Pergerakan dan pertembungan antara Plat Eurasia dengan Plat India telah membentuk Banjaran Himalaya yang digelar sebagai "Bumbung Dunia". Begitu juga dalam perjalanan panjang tamadun manusia, pergolakan dunia serta perubahan dalam pemikiran manusia telah melahirkan seorang tokoh agung yang dikenali sebagai "Tokoh Ketenteraan Ulung", Sun Tzu. Di medan pertempuran darah dan api, beliau mencurahkan seluruh tenaga dan ilmunya untuk menghasilkan sebuah karya agung ilmu ketenteraan — <em>The Art of War (Seni Peperangan).</em></p>
+    </div>
+  </div>
+</div>
+
+<!-- S3: TERMINOLOGY -->
+<div class="section" id="s3">
+  <div class="sec-hdr">
+    <span class="sec-num">03</span>
+    <h2 class="sec-title">Terminology Management &amp; Tools</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="card-grid">
+    <div class="card">
+      <p class="card-tag">CAT Tool Proficiency</p>
+      <h3>SDL Trados — Glossary-Driven Workflow</h3>
+      <p>Built and maintained domain-specific glossary bases across academic, technical, and localization projects. Terminology management is the backbone of editorial consistency — a word that means one thing on page 3 must mean the same on page 83.</p>
+      <p class="card-note">SDL Trados · Smartcat · Custom Termbase</p>
+    </div>
+    <div class="card">
+      <p class="card-tag">AI-Assisted Editing</p>
+      <h3>MTPE — Machine Translation Post-Editing</h3>
+      <p>Post-edited 250+ video assets at Legend Cultural, correcting machine output for accuracy, register, and cultural appropriateness. MTPE errors come pre-packaged and confidently formatted — catching them demands sharper editorial judgment, not less.</p>
+      <p class="card-note">250+ assets · Chinese–English · Chinese–Malay</p>
+    </div>
+    <div class="card">
+      <p class="card-tag">AI Language Data</p>
+      <h3>Ground-Truth Dataset Building · WIZ.AI</h3>
+      <p>Constructed annotated datasets for NLP and ASR model training, maintaining 95%+ transcription accuracy. Every label is a decision about what a text means and how language behaves.</p>
+      <p class="card-note">NLP · ASR · Corpus QA · Ground Truth</p>
+    </div>
+    <div class="card">
+      <p class="card-tag">Language Credentials</p>
+      <h3>Trilingual · Certified Proficiency</h3>
+      <p>Chinese (Native) · Malay (Native) · English (Fluent). HSK Level 6. MUET Band 4. Currently enrolled in the ITBM Certified Translator Programme — results expected April 2026.</p>
+      <p class="card-note">HSK 6 · MUET Band 4 · CGPA 3.91 · ITBM (Enrolled · Pending Apr 2026)</p>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="skills">
+  <div class="skill"><p class="skill-name">SDL Trados</p><p class="skill-desc">CAT &amp; Termbase</p></div>
+  <div class="skill"><p class="skill-name">Smartcat</p><p class="skill-desc">Cloud Translation</p></div>
+  <div class="skill"><p class="skill-name">Aegisub</p><p class="skill-desc">Subtitle Timing</p></div>
+  <div class="skill"><p class="skill-name">Microsoft Office</p><p class="skill-desc">Word · Excel · OneNote</p></div>
+  <div class="skill"><p class="skill-name">Google Colab</p><p class="skill-desc">Data &amp; Annotation</p></div>
+  <div class="skill"><p class="skill-name">MTPE</p><p class="skill-desc">Post-Editing at Scale</p></div>
+  <div class="skill"><p class="skill-name">SRT / Subtitle</p><p class="skill-desc">CPS · Timing · QA</p></div>
+  <div class="skill"><p class="skill-name">ASR / NLP</p><p class="skill-desc">Corpus Annotation</p></div>
+</div>
+
+<!-- S4: LOCALIZATION -->
+<div class="section alt" id="s4">
+  <div class="sec-hdr">
+    <span class="sec-num">04</span>
+    <h2 class="sec-title">Localization &amp; Subtitling</h2>
+    <div class="sec-rule"></div>
+  </div>
+
+  <div class="entry">
+    <p class="entry-title">Animation Localization — <em>Loyal Hero</em> (精忠少年岳飞)</p>
+    <p class="entry-meta">Chinese → English · 13 Episodes · Children's Series</p>
+    <p>Localized a 13-episode Chinese historical animation (~10 min/ep) into English for international audiences. Required independent historical research — verifying period-accurate terminology and cultural references from the Song dynasty context. A key editorial challenge was character-title consistency: the same person addressed differently depending on speaker and context, requiring a clear termbase maintained across all 13 episodes.</p>
+    <div class="sbox blue" style="margin-top:1rem;">
+      <p class="sbox-label">Sample — Narration (Third-Person)</p>
+      <table class="sub-table">
+        <tr><td class="sub-zh">起初周同只教文不授武</td><td class="sub-en">At first, Zhou Tong taught books, not fighting.</td></tr>
+        <tr><td class="sub-zh">众兄弟深夜遭遇狼群</td><td class="sub-en">One night, the boys were attacked by wolves.</td></tr>
+        <tr><td class="sub-zh">终得师父解救</td><td class="sub-en">But their master saved them.</td></tr>
+        <tr><td class="sub-zh">先教忠义立根本 / 再淬刀锋成将才</td><td class="sub-en">He taught them what was right first, before teaching them how to fight.</td></tr>
+      </table>
+    </div>
+    <div class="sbox" style="margin-top:0.8rem;">
+      <p class="sbox-label">Sample — Dialogue (Direct Address)</p>
+      <table class="sub-table">
+        <tr><td class="sub-zh">这位就是咱们的师父</td><td class="sub-en">This is our master.</td></tr>
+        <tr><td class="sub-zh">大侠周同</td><td class="sub-en">The great hero, Zhou Tong.</td></tr>
+        <tr><td class="sub-zh">周同不过如此</td><td class="sub-en">Zhou Tong is nothing special.</td></tr>
+        <tr><td class="sub-zh">你这伤，本王留的 / 是你一辈子的荣耀</td><td class="sub-en">That scar I gave you? The greatest honor you'll have!</td></tr>
+      </table>
+    </div>
+    <div class="sbox" style="margin-top:0.8rem;">
+      <p class="sbox-label">Editorial Note — Terminology</p>
+      <p>Termbase: 师父 → "Master" (direct address); 周同 → "Zhou Tong" (narration); 大侠周同 → "The great hero, Zhou Tong" (formal introduction). All lines finalized to director CPS limits in simple English for ages 7–12.</p>
+    </div>
+  </div>
+
+  <div class="entry">
+    <p class="entry-title">Short Drama — Subtitle QA &amp; Proofreading</p>
+    <p class="entry-meta">Chinese → English · Legend Cultural Sdn Bhd</p>
+    <p>Conducted subtitle QA for short-form drama series, reviewing localized English subtitles for grammatical accuracy, natural register, and idiomatic correctness. Each correction documented with clear editorial rationale — ensuring the team understood not just what changed, but why.</p>
+    <div class="sbox blue" style="margin-top:1rem;">
+      <p class="sbox-label">QA Sample — Before / After with Editorial Notes</p>
+      <table class="qa-table">
+        <thead>
+          <tr>
+            <td class="qa-th" style="width:28%;">Original</td>
+            <td class="qa-th" style="width:28%;">Corrected</td>
+            <td class="qa-th">Editorial Note</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="qa-b">She's just a car wash staff.</td>
+            <td class="qa-a">She's just a car wash worker.</td>
+            <td class="qa-n">"Staff" is a mass noun — cannot be used as a singular count noun.</td>
+          </tr>
+          <tr>
+            <td class="qa-b">I've always treated you generously.</td>
+            <td class="qa-a">I've always been good to you.</td>
+            <td class="qa-n">Overly literal. Unnatural in casual confrontational dialogue.</td>
+          </tr>
+          <tr>
+            <td class="qa-b" style="border-bottom:none;">But I can't be bothered to deal with you.</td>
+            <td class="qa-a" style="border-bottom:none;">I'm done dealing with you.</td>
+            <td class="qa-n" style="border-bottom:none;">Direct translation sounds stilted. Better register and CPS.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact" id="contact">
+  <div>
+    <h2>Let's work<br><em>together.</em></h2>
+    <p class="contact-sub">Open to editorial, translation, and language-specialist roles. Based in Malaysia — available for remote work.</p>
+  </div>
+  <div class="contact-items">
+    <div class="ci"><span class="ci-label">Email</span><span class="ci-val"><a href="mailto:gwennn510@gmail.com">gwennn510@gmail.com</a></span></div>
+    <div class="ci"><span class="ci-label">Phone</span><span class="ci-val">+60 18-296 6637</span></div>
+    <div class="ci"><span class="ci-label">LinkedIn</span><span class="ci-val"><a href="https://www.linkedin.com/in/sew-mun/" target="_blank">linkedin.com/in/sew-mun</a></span></div>
+    <div class="ci"><span class="ci-label">Location</span><span class="ci-val">Selangor, Malaysia</span></div>
+  </div>
+</div>
+
+<footer>
+  <span>Chen Sew Mun · Editorial &amp; Translation Portfolio</span>
+  <span>Chinese · English · Malay</span>
+</footer>
+
+</body>
+</html>
